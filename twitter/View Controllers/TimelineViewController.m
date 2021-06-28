@@ -8,8 +8,11 @@
 
 #import "TimelineViewController.h"
 #import "../API/APIManager.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface TimelineViewController ()
+- (IBAction)logoutPressed:(UIButton *)sender;
 
 @end
 
@@ -48,4 +51,17 @@
 */
 
 
+- (IBAction)logoutPressed:(UIButton *)sender {
+    NSLog(@"Log out");
+    //Creates app delegate, Main storyboard, and Login view controller. Then sets the root view controller (the one the user sees) to the Login view controller
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
+    //Clears out access tokens, basically logs user out
+    [[APIManager shared] logout];
+    
+}
 @end
