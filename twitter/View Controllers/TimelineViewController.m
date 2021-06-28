@@ -10,9 +10,21 @@
 #import "../API/APIManager.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "TweetCell.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface TimelineViewController ()
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
+
 - (IBAction)logoutPressed:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UITableView *timelineView;
+//@property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
+//@property (weak, nonatomic) IBOutlet UILabel *screenName;
+//@property (weak, nonatomic) IBOutlet UILabel *name;
+//@property (weak, nonatomic) IBOutlet UILabel *tweetText;
+//@property (weak, nonatomic) IBOutlet UILabel *numReplies;
+//@property (weak, nonatomic) IBOutlet UILabel *numRetweets;
+//@property (weak, nonatomic) IBOutlet UILabel *numFavorites;
+@property (strong, nonatomic) NSMutableArray *tweetArray;
 
 @end
 
@@ -20,16 +32,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.timelineView.dataSource = self;
+    self.timelineView.delegate = self;
     
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            for (NSDictionary *dictionary in tweets) {
-                NSString *text = dictionary[@"text"];
-                NSLog(@"%@", text);
-            }
-            self.arrayOfTweets = tweets;
+            //Sets tweet array property to result of API call
+            self.tweetArray = (NSMutableArray*) tweets;
+//            for (NSDictionary *dictionary in tweets) {
+//                NSString *text = dictionary[@"text"];
+//                NSLog(@"%@", text);
+//            }
+            [self.timelineView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
@@ -39,6 +55,40 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TweetCell *cell = [self.timelineView dequeueReusableCellWithIdentifier:@"TweetCell"];
+    
+    Tweet *tweet = self.tweetArray[indexPath.row];
+    cell.tweet = tweet;
+    
+    //Set profile picture
+    NSString *URLString = tweet.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    cell.profilePicture.image = [UIImage imageWithData:urlData];
+    
+    //Set screen name
+    cell.screenName.text = tweet.user.screenName;
+    
+    //Set name
+    cell.name.text = tweet.user.name;
+    
+    //Set tweet text;
+    cell.tweetText.text = tweet.text;
+    
+    //Set retweet count
+    cell.retweetCount.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+    
+    //Set favorite count
+    cell.favoriteCount.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+    
+    return cell;
 }
 
 /*
