@@ -12,8 +12,9 @@
 #import "LoginViewController.h"
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ComposeViewController.h"
 
-@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 
 - (IBAction)logoutPressed:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *timelineView;
@@ -95,15 +96,18 @@
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // Set navigation controller as the destination controller
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    //Sets timeline view controller as delegate of compose view controller
+    composeController.delegate = self;
 }
-*/
+
 
 
 - (IBAction)logoutPressed:(UIButton *)sender {
@@ -119,4 +123,10 @@
     [[APIManager shared] logout];
     
 }
+- (void)didTweet:(nonnull Tweet *)tweet {
+    [self.tweetArray addObject:tweet];
+    [self.timelineView reloadData];
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
 @end

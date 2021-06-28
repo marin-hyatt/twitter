@@ -15,6 +15,7 @@
 - (IBAction)closeTweet:(UIBarButtonItem *)sender;
 
 
+
 @end
 
 @implementation ComposeViewController
@@ -44,7 +45,7 @@
     [[APIManager shared] postTweet:text completion:^(Tweet *tweet, NSError *error) {
         if (error == nil) {
             NSLog(@"Posted tweet!");
-            [self dismissViewControllerAnimated:true completion:nil];
+            [self.delegate didTweet:tweet];
         } else {
             NSLog(@"Error posting tweet: %@", error.localizedDescription);
         }
