@@ -17,13 +17,7 @@
 
 - (IBAction)logoutPressed:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *timelineView;
-//@property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
-//@property (weak, nonatomic) IBOutlet UILabel *screenName;
-//@property (weak, nonatomic) IBOutlet UILabel *name;
-//@property (weak, nonatomic) IBOutlet UILabel *tweetText;
-//@property (weak, nonatomic) IBOutlet UILabel *numReplies;
-//@property (weak, nonatomic) IBOutlet UILabel *numRetweets;
-//@property (weak, nonatomic) IBOutlet UILabel *numFavorites;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSMutableArray *tweetArray;
 
 @end
@@ -35,6 +29,15 @@
     self.timelineView.dataSource = self;
     self.timelineView.delegate = self;
     
+    //Initialize refresh control for pull to refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(loadTweets) forControlEvents:UIControlEventValueChanged];
+    [self.timelineView insertSubview:self.refreshControl atIndex:0];
+    
+    [self loadTweets];
+}
+
+- (void)loadTweets {
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -46,6 +49,7 @@
 //                NSLog(@"%@", text);
 //            }
             [self.timelineView reloadData];
+            [self.refreshControl endRefreshing];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
@@ -77,7 +81,7 @@
     cell.screenName.text = tweet.user.screenName;
     
     //Set name
-    cell.name.text = tweet.user.name;
+    cell.name.text = [NSString stringWithFormat:@"@%@", tweet.user.name];
     
     //Set tweet text;
     cell.tweetText.text = tweet.text;
