@@ -7,7 +7,7 @@
 //
 
 #import "TimelineViewController.h"
-#import "APIManager.h"
+#import "../API/APIManager.h"
 
 @interface TimelineViewController ()
 
