@@ -29,6 +29,7 @@
                 NSString *text = dictionary[@"text"];
                 NSLog(@"%@", text);
             }
+            self.arrayOfTweets = tweets;
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
