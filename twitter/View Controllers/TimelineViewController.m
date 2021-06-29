@@ -72,31 +72,7 @@
     Tweet *tweet = self.tweetArray[indexPath.row];
     cell.tweet = tweet;
     
-    //Set profile picture
-    NSString *URLString = tweet.user.profilePicture;
-    NSURL *url = [NSURL URLWithString:URLString];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
-    cell.profilePicture.image = [UIImage imageWithData:urlData];
-    
-    //Set screen name
-    cell.screenName.text = tweet.user.name;
-    
-    //Set name
-    cell.name.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
-    
-    //Set tweet text;
-    cell.tweetText.text = tweet.text;
-    
-    //Set retweet count
-    cell.retweetCount.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
-    
-    //Set favorite count
-    cell.favoriteCount.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
-    
-    //Set timestamp
-    cell.timestamp.text = tweet.createdAtString;
-    
-    //Refreshes cell UI
+    //Refreshes cell UI with tweet data
     [cell refreshData];
     
     return cell;

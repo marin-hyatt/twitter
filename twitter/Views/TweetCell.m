@@ -86,6 +86,31 @@
     
     self.favoriteButton.selected = self.tweet.favorited;
     self.retweetButton.selected = self.tweet.retweeted;
+    
+    //Set profile picture
+    NSString *URLString = self.tweet.user.profilePicture;
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    self.profilePicture.image = [UIImage imageWithData:urlData];
+    
+    //Set screen name
+    self.screenName.text = self.tweet.user.name;
+    
+    //Set name
+    self.name.text = [NSString stringWithFormat:@"@%@", self.tweet.user.screenName];
+    
+    //Set tweet text;
+    self.tweetText.text = self.tweet.text;
+    
+    //Set retweet count
+    self.retweetCount.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
+    
+    //Set favorite count
+    self.favoriteCount.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+    
+    //Set timestamp
+    
+    self.timestamp.text = self.tweet.createdAtString;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

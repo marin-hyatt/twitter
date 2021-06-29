@@ -7,6 +7,7 @@
 //
 
 #import "Tweet.h"
+#import "DateTools.h"
 
 @implementation Tweet
 
@@ -33,6 +34,7 @@
         // initialize user
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
+        
 
         // Format and set createdAtString
         NSString *createdAtOriginalString = dictionary[@"created_at"];
@@ -41,11 +43,23 @@
         formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
         // Convert String to Date
         NSDate *date = [formatter dateFromString:createdAtOriginalString];
+        
+        double timeInterval = date.timeIntervalSinceNow;
+        
+        NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:timeInterval];
+        NSLog(@"Time Ago: %@", timeAgoDate.shortTimeAgoSinceNow);
+        NSLog(@"%f", timeInterval);
+        
         // Configure output format
         formatter.dateStyle = NSDateFormatterShortStyle;
         formatter.timeStyle = NSDateFormatterNoStyle;
         // Convert Date to String
-        self.createdAtString = [formatter stringFromDate:date];
+        // If more than a week has passed since the tweet, display the date. Else, use DateTool to get the time elapsed
+        if (fabs(timeInterval) > 604800) {
+            self.createdAtString = [formatter stringFromDate:date];
+        } else {
+            self.createdAtString = timeAgoDate.shortTimeAgoSinceNow;
+        }
     }
     return self;
 }
