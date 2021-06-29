@@ -79,10 +79,10 @@
     cell.profilePicture.image = [UIImage imageWithData:urlData];
     
     //Set screen name
-    cell.screenName.text = tweet.user.screenName;
+    cell.screenName.text = tweet.user.name;
     
     //Set name
-    cell.name.text = [NSString stringWithFormat:@"@%@", tweet.user.name];
+    cell.name.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
     
     //Set tweet text;
     cell.tweetText.text = tweet.text;
