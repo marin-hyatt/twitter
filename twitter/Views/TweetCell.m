@@ -7,6 +7,7 @@
 //
 
 #import "TweetCell.h"
+#import "../API/APIManager.h"
 
 @implementation TweetCell
 
@@ -15,14 +16,35 @@
         //Set tweet status to favorited and update its favorite count
         self.tweet.favorited = YES;
         self.tweet.favoriteCount += 1;
+        [[APIManager shared] favoriteTweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+             }
+         }];
     } else {
         self.tweet.favorited = NO;
         self.tweet.favoriteCount -= 1;
+        [[APIManager shared] unfavoriteTweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
+             }
+         }];
     }
     self.favoriteButton.selected = !self.favoriteButton.selected;
+    
     [self refreshData];
 }
 - (IBAction)tweetRetweeted:(UIButton *)sender {
+    if (!self.tweet.retweeted) {
+        //Set tweet status to retweeted and update retweet count
+        
+    }
 }
 
 - (void)awakeFromNib {
