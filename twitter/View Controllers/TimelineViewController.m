@@ -93,6 +93,12 @@
     //Set favorite count
     cell.favoriteCount.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
     
+    //Set timestamp
+    cell.timestamp.text = tweet.createdAtString;
+    
+    //Refreshes cell UI
+    [cell refreshData];
+    
     return cell;
 }
 

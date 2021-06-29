@@ -91,7 +91,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Rx-b1-MNY">
-                                                    <rect key="frame" x="159" y="5" width="37.5" height="18"/>
+                                                    <rect key="frame" x="155" y="5" width="37.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -182,18 +182,27 @@
                                                         <constraint firstItem="CAE-RY-x4x" firstAttribute="leading" secondItem="tMD-XP-IVP" secondAttribute="leading" id="yZ5-TS-Can"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgp-iC-bq7">
+                                                    <rect key="frame" x="299" y="5" width="71" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="tMD-XP-IVP" secondAttribute="bottom" constant="5" id="0Wd-hi-4ea"/>
                                                 <constraint firstItem="05h-tH-jbv" firstAttribute="leading" secondItem="jB1-QT-3PN" secondAttribute="leading" constant="5" id="2Lk-I1-y3c"/>
+                                                <constraint firstItem="Wgp-iC-bq7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4Rx-b1-MNY" secondAttribute="trailing" constant="5" id="3dZ-X4-Upe"/>
                                                 <constraint firstItem="tMD-XP-IVP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NcK-bc-aIr" secondAttribute="bottom" constant="21.5" id="5Mf-Xo-93h"/>
                                                 <constraint firstItem="tMD-XP-IVP" firstAttribute="leading" secondItem="NcK-bc-aIr" secondAttribute="leading" id="DfP-rj-Jsh"/>
+                                                <constraint firstItem="Wgp-iC-bq7" firstAttribute="top" secondItem="jB1-QT-3PN" secondAttribute="top" constant="5" id="G53-FV-R4l"/>
                                                 <constraint firstItem="NcK-bc-aIr" firstAttribute="top" secondItem="Uwg-WD-Bq7" secondAttribute="bottom" constant="5" id="Jca-tG-DT1"/>
                                                 <constraint firstItem="Uwg-WD-Bq7" firstAttribute="top" secondItem="jB1-QT-3PN" secondAttribute="top" constant="5" id="OGM-gQ-mv0"/>
                                                 <constraint firstItem="4Rx-b1-MNY" firstAttribute="top" secondItem="jB1-QT-3PN" secondAttribute="top" constant="5" id="OKG-Hr-QJu"/>
                                                 <constraint firstItem="Uwg-WD-Bq7" firstAttribute="leading" secondItem="05h-tH-jbv" secondAttribute="trailing" constant="5" id="OKr-dO-z2R"/>
                                                 <constraint firstItem="tMD-XP-IVP" firstAttribute="trailing" secondItem="NcK-bc-aIr" secondAttribute="trailing" id="RHz-Jx-Ecq"/>
-                                                <constraint firstItem="4Rx-b1-MNY" firstAttribute="leading" secondItem="Uwg-WD-Bq7" secondAttribute="trailing" constant="5" id="hrn-yl-Q1d"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wgp-iC-bq7" secondAttribute="trailing" constant="5" id="fyV-xA-avs"/>
+                                                <constraint firstItem="4Rx-b1-MNY" firstAttribute="leading" secondItem="Uwg-WD-Bq7" secondAttribute="trailing" constant="1" id="hrn-yl-Q1d"/>
                                                 <constraint firstItem="NcK-bc-aIr" firstAttribute="trailing" secondItem="jB1-QT-3PN" secondAttribute="trailingMargin" constant="5" id="iG5-Rg-c9w"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="NcK-bc-aIr" secondAttribute="bottom" constant="5" id="lr6-IV-JLy"/>
                                                 <constraint firstItem="NcK-bc-aIr" firstAttribute="leading" secondItem="05h-tH-jbv" secondAttribute="trailing" constant="5" id="mcN-89-zXr"/>
@@ -210,6 +219,7 @@
                                             <outlet property="retweetButton" destination="BLX-EW-VHG" id="ZUr-Xj-cJL"/>
                                             <outlet property="retweetCount" destination="BRI-Mf-Uuh" id="tQY-9B-qXR"/>
                                             <outlet property="screenName" destination="Uwg-WD-Bq7" id="FHl-Mf-MM9"/>
+                                            <outlet property="timestamp" destination="Wgp-iC-bq7" id="BJu-kg-gRj"/>
                                             <outlet property="tweetText" destination="NcK-bc-aIr" id="YBy-ZF-6Pg"/>
                                         </connections>
                                     </tableViewCell>
