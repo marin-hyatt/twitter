@@ -88,10 +88,15 @@
     self.retweetButton.selected = self.tweet.retweeted;
     
     //Set profile picture
-    NSString *URLString = self.tweet.user.profilePicture;
-    NSURL *url = [NSURL URLWithString:URLString];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
-    self.profilePicture.image = [UIImage imageWithData:urlData];
+    self.profilePicture.image = nil;
+    
+    if (self.tweet.user.profilePicture != nil) {
+        NSString *URLString = self.tweet.user.profilePicture;
+        NSURL *url = [NSURL URLWithString:URLString];
+        NSData *urlData = [NSData dataWithContentsOfURL:url];
+        self.profilePicture.image = [UIImage imageWithData:urlData];
+    }
+    
     
     //Set screen name
     self.screenName.text = self.tweet.user.name;

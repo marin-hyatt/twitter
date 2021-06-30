@@ -382,6 +382,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fxi-se-0Tv"/>
+                    <connections>
+                        <outlet property="favoriteButton" destination="9o9-Lv-14Z" id="Lzs-ko-Ci4"/>
+                        <outlet property="favoriteCount" destination="Ddk-90-Uch" id="hdt-73-N40"/>
+                        <outlet property="name" destination="sQY-RC-h2z" id="Yus-Ti-PH4"/>
+                        <outlet property="profilePicture" destination="y0T-Bk-PYS" id="9aR-ac-gWZ"/>
+                        <outlet property="retweetButton" destination="E7g-XI-Zjp" id="Z4A-D2-yiN"/>
+                        <outlet property="retweetCount" destination="FAg-ad-apC" id="et9-pa-c4H"/>
+                        <outlet property="screenName" destination="Nuc-kL-DTO" id="Yyw-he-ueB"/>
+                        <outlet property="timestamp" destination="Yra-bc-jH5" id="J0q-TU-MCk"/>
+                        <outlet property="tweetText" destination="blH-hW-GiD" id="alC-5f-Yv4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wng-y3-TZj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

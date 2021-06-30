@@ -13,6 +13,7 @@
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
+#import "DetailViewController.h"
 
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 
@@ -84,6 +85,18 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier]  isEqual: @"DetailViewController"]) {
+        //Gets the tweet corresponding to the tapped cell
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.timelineView indexPathForCell:tappedCell];
+        Tweet *tweet = self.tweetArray[indexPath.row];
+        
+        // Gets the destination view controller.
+        DetailViewController *detailViewController = [segue destinationViewController];
+        
+        // Pass the movie to the new view controller.
+        detailViewController.tweet = tweet;
+        
+        
         
     } else {
         // Segue to compose tweets
