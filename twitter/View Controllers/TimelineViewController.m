@@ -83,11 +83,16 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Set navigation controller as the destination controller
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-    //Sets timeline view controller as delegate of compose view controller
-    composeController.delegate = self;
+    if ([[segue identifier]  isEqual: @"DetailViewController"]) {
+        
+    } else {
+        // Segue to compose tweets
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        //Sets timeline view controller as delegate of compose view controller
+        composeController.delegate = self;
+    }
+    
 }
 
 
