@@ -99,14 +99,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcK-bc-aIr">
-                                                    <rect key="frame" x="78" y="30" width="286" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMD-XP-IVP">
-                                                    <rect key="frame" x="78" y="51.5" width="299" height="25"/>
+                                                    <rect key="frame" x="78" y="52" width="299" height="25"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply-icon" translatesAutoresizingMaskIntoConstraints="NO" id="CAE-RY-x4x">
                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -168,6 +162,7 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="BRI-Mf-Uuh" firstAttribute="top" secondItem="tMD-XP-IVP" secondAttribute="top" id="0sm-rr-lKN"/>
+                                                        <constraint firstAttribute="width" constant="299" id="2Gw-Rm-sgL"/>
                                                         <constraint firstItem="i3G-Zd-Nwa" firstAttribute="top" secondItem="tMD-XP-IVP" secondAttribute="top" id="2IQ-ws-M0u"/>
                                                         <constraint firstItem="i3G-Zd-Nwa" firstAttribute="leading" secondItem="uuh-SS-qdc" secondAttribute="trailing" constant="5" id="8Km-S8-IgY"/>
                                                         <constraint firstItem="CAE-RY-x4x" firstAttribute="top" secondItem="tMD-XP-IVP" secondAttribute="top" id="AvY-ft-XRE"/>
@@ -195,24 +190,34 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" id="bZP-Sc-SMC">
+                                                    <rect key="frame" x="78" y="30" width="286" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tMD-XP-IVP" secondAttribute="bottom" constant="5" id="0Wd-hi-4ea"/>
                                                 <constraint firstItem="05h-tH-jbv" firstAttribute="leading" secondItem="jB1-QT-3PN" secondAttribute="leading" constant="15" id="2Lk-I1-y3c"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="05h-tH-jbv" secondAttribute="bottom" constant="5" id="59f-8b-HoA"/>
-                                                <constraint firstItem="tMD-XP-IVP" firstAttribute="top" secondItem="NcK-bc-aIr" secondAttribute="bottom" constant="1" id="5Mf-Xo-93h"/>
+                                                <constraint firstItem="Wgp-iC-bq7" firstAttribute="trailing" secondItem="bZP-Sc-SMC" secondAttribute="trailing" id="6LE-6D-rk2"/>
                                                 <constraint firstItem="Wgp-iC-bq7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4Rx-b1-MNY" secondAttribute="trailing" constant="8" id="7g1-in-hdd"/>
                                                 <constraint firstItem="4Rx-b1-MNY" firstAttribute="firstBaseline" secondItem="Uwg-WD-Bq7" secondAttribute="firstBaseline" id="Atm-qa-pgR"/>
-                                                <constraint firstItem="tMD-XP-IVP" firstAttribute="leading" secondItem="NcK-bc-aIr" secondAttribute="leading" id="DfP-rj-Jsh"/>
-                                                <constraint firstItem="NcK-bc-aIr" firstAttribute="top" secondItem="Uwg-WD-Bq7" secondAttribute="bottom" constant="1" id="Jca-tG-DT1"/>
                                                 <constraint firstItem="Uwg-WD-Bq7" firstAttribute="top" secondItem="jB1-QT-3PN" secondAttribute="top" constant="11" id="OGM-gQ-mv0"/>
                                                 <constraint firstItem="Uwg-WD-Bq7" firstAttribute="leading" secondItem="05h-tH-jbv" secondAttribute="trailing" constant="13" id="OKr-dO-z2R"/>
-                                                <constraint firstItem="tMD-XP-IVP" firstAttribute="trailing" secondItem="NcK-bc-aIr" secondAttribute="trailing" constant="13" id="RHz-Jx-Ecq"/>
+                                                <constraint firstItem="bZP-Sc-SMC" firstAttribute="leading" secondItem="Uwg-WD-Bq7" secondAttribute="leading" id="QxC-ny-yn0"/>
+                                                <constraint firstItem="tMD-XP-IVP" firstAttribute="leading" secondItem="bZP-Sc-SMC" secondAttribute="leading" id="RhV-D6-8eE"/>
                                                 <constraint firstItem="Wgp-iC-bq7" firstAttribute="firstBaseline" secondItem="Uwg-WD-Bq7" secondAttribute="firstBaseline" id="UBH-Vu-t3f"/>
+                                                <constraint firstItem="tMD-XP-IVP" firstAttribute="top" secondItem="bZP-Sc-SMC" secondAttribute="bottom" constant="1" id="ZDW-Qq-8Gl"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wgp-iC-bq7" secondAttribute="trailing" constant="5" id="fyV-xA-avs"/>
                                                 <constraint firstItem="4Rx-b1-MNY" firstAttribute="leading" secondItem="Uwg-WD-Bq7" secondAttribute="trailing" constant="1" id="hrn-yl-Q1d"/>
-                                                <constraint firstItem="NcK-bc-aIr" firstAttribute="trailing" secondItem="jB1-QT-3PN" secondAttribute="trailingMargin" constant="5" id="iG5-Rg-c9w"/>
-                                                <constraint firstItem="NcK-bc-aIr" firstAttribute="leading" secondItem="05h-tH-jbv" secondAttribute="trailing" constant="13" id="mcN-89-zXr"/>
+                                                <constraint firstItem="bZP-Sc-SMC" firstAttribute="top" secondItem="Uwg-WD-Bq7" secondAttribute="bottom" constant="1" id="rVA-yw-XPa"/>
+                                                <constraint firstItem="bZP-Sc-SMC" firstAttribute="leading" secondItem="05h-tH-jbv" secondAttribute="trailing" constant="13" id="seU-6y-SRH"/>
                                                 <constraint firstItem="05h-tH-jbv" firstAttribute="top" secondItem="jB1-QT-3PN" secondAttribute="top" constant="11" id="xDk-Ja-4uY"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -226,7 +231,7 @@
                                             <outlet property="retweetCount" destination="BRI-Mf-Uuh" id="tQY-9B-qXR"/>
                                             <outlet property="screenName" destination="Uwg-WD-Bq7" id="FHl-Mf-MM9"/>
                                             <outlet property="timestamp" destination="Wgp-iC-bq7" id="BJu-kg-gRj"/>
-                                            <outlet property="tweetText" destination="NcK-bc-aIr" id="YBy-ZF-6Pg"/>
+                                            <outlet property="tweetText" destination="bZP-Sc-SMC" id="KmX-tz-Qat"/>
                                             <segue destination="pc0-Cp-rSW" kind="show" identifier="DetailViewController" id="3Rw-EO-Mrp"/>
                                         </connections>
                                     </tableViewCell>

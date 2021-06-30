@@ -80,7 +80,15 @@
 -(void)refreshData {
     self.screenName.text = self.tweet.user.name;
     self.name.text = [NSString stringWithFormat:@"@%@", self.tweet.user.screenName];
+    
+    //Resizes text view to fit width of tweet
     self.tweetText.text = self.tweet.text;
+    CGFloat fixedWidth = self.tweetText.frame.size.width;
+    CGSize newSize = [self.tweetText sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = self.tweetText.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    self.tweetText.frame = newFrame;
+    
     self.favoriteCount.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
     self.retweetCount.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     
@@ -88,6 +96,8 @@
     self.retweetButton.selected = self.tweet.retweeted;
     
     //Set profile picture
+    self.profilePicture.layer.cornerRadius = 25;
+    self.profilePicture.layer.masksToBounds = true;
     self.profilePicture.image = nil;
     
     if (self.tweet.user.profilePicture != nil) {
