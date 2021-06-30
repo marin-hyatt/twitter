@@ -18,7 +18,7 @@ The following **required** functionality is completed:
 - [x] User can compose a new tweet by tapping on a compose button.
 - [x] Using AutoLayout, the Tweet cell should adjust its layout for iPhone 11, Pro and SE device sizes as well as accommodate device rotation.
 - [x] User should display the relative timestamp for each tweet "8m", "7h"
-- [ ] Tweet Details Page: User can tap on a tweet to view it, with controls to retweet and favorite.
+- [x] Tweet Details Page: User can tap on a tweet to view it, with controls to retweet and favorite.
 
 The following **optional** features are implemented:
 
@@ -26,7 +26,7 @@ The following **optional** features are implemented:
   - Contains the user header view: picture and tagline
   - Contains a section with the users basic stats: # tweets, # following, # followers
   - [ ] Profile view should include that user's timeline
-- [ ] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. Refer to [[this guide|unretweeting]] for help on implementing unretweeting.
+- [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. Refer to [[this guide|unretweeting]] for help on implementing unretweeting.
 - [ ] Links in tweets are clickable.
 - [ ] User can tap the profile image in any tweet to see another user's profile
   - Contains the user header view: picture and tagline

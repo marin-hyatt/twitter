@@ -412,17 +412,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bI5-sT-JX6">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="353"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bI5-sT-JX6">
+                                <rect key="frame" x="50" y="76" width="300" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="3lc-7r-7S5"/>
+                                    <constraint firstAttribute="width" constant="300" id="QKJ-qw-ZIb"/>
+                                </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sOw-5p-xHK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.58431372550000005" green="0.74117647060000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="bI5-sT-JX6" firstAttribute="leading" secondItem="sOw-5p-xHK" secondAttribute="leading" constant="50" id="1do-70-vbf"/>
+                            <constraint firstItem="bI5-sT-JX6" firstAttribute="top" secondItem="sOw-5p-xHK" secondAttribute="top" constant="20" id="Qrd-xL-OsR"/>
+                            <constraint firstItem="sOw-5p-xHK" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bI5-sT-JX6" secondAttribute="bottom" constant="20" id="fvg-NB-Gta"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bzE-63-fwd">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="close-icon" id="Kni-CG-Zm2">

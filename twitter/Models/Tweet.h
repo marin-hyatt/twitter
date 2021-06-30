@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL retweeted; // Configure retweet button
 @property (nonatomic, strong) User *user; // Contains Tweet author's name, screenname, etc.
 @property (nonatomic, strong) NSString *createdAtString; // Display date
+@property (nonatomic, strong) NSURL *mediaURL; // URL of any image displayed in the tweet
+@property (nonatomic, strong) NSURL *URL; // Any URL displayed in the tweet
 
 // For Retweets
 @property (nonatomic, strong) User *retweetedByUser;  // user who retweeted if tweet is retweet

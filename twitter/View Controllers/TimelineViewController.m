@@ -96,14 +96,15 @@
         // Pass the movie to the new view controller.
         detailViewController.tweet = tweet;
         
-        
-        
     } else {
         // Segue to compose tweets
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         //Sets timeline view controller as delegate of compose view controller
         composeController.delegate = self;
+        
+        //Send profile picture to Compose tweet screen
+        
     }
     
 }

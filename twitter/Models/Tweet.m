@@ -47,8 +47,6 @@
         double timeInterval = date.timeIntervalSinceNow;
         
         NSDate *timeAgoDate = [NSDate dateWithTimeIntervalSinceNow:timeInterval];
-        NSLog(@"Time Ago: %@", timeAgoDate.shortTimeAgoSinceNow);
-        NSLog(@"%f", timeInterval);
         
         // Configure output format
         formatter.dateStyle = NSDateFormatterShortStyle;
@@ -60,6 +58,15 @@
         } else {
             self.createdAtString = timeAgoDate.shortTimeAgoSinceNow;
         }
+        
+        //Get any (non-media) URLs in tweet
+        NSDictionary *entityDictionary = dictionary[@"entities"];
+        NSArray *urlArray = entityDictionary[@"urls"];
+        
+        if ([urlArray count] != 0) {
+            self.URL = [NSURL URLWithString:urlArray[0][@"expanded_url"]];
+        }
+        
     }
     return self;
 }
@@ -70,6 +77,7 @@
     NSMutableArray *tweets = [NSMutableArray array];
     //For every tweet dictionary, initialize the tweet and add it to the array
     for (NSDictionary *dictionary in dictionaries) {
+//        NSLog(@"%@", dictionary);
         Tweet *tweet = [[Tweet alloc] initWithDictionary:dictionary];
         [tweets addObject:tweet];
     }
