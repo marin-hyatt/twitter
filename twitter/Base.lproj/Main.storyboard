@@ -332,12 +332,18 @@
                                         <state key="normal" title="Button" image="favor-icon"/>
                                         <state key="selected" image="favor-icon-red"/>
                                         <state key="highlighted" image="favor-icon-red"/>
+                                        <connections>
+                                            <action selector="tweetFavorited:" destination="pc0-Cp-rSW" eventType="touchUpInside" id="P05-Dt-KXE"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7g-XI-Zjp">
                                         <rect key="frame" x="78" y="0.0" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="retweet-icon"/>
                                         <state key="selected" image="retweet-icon-green"/>
+                                        <connections>
+                                            <action selector="tweetRetweeted:" destination="pc0-Cp-rSW" eventType="touchUpInside" id="aBS-7i-pgG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
