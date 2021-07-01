@@ -40,7 +40,7 @@
     self.favoriteButton.selected = self.tweet.favorited;
     self.retweetButton.selected = self.tweet.retweeted;
     
-    //Set profile picture
+    // Set profile picture
     self.profilePicture.layer.cornerRadius = 25;
     self.profilePicture.layer.masksToBounds = true;
     self.profilePicture.image = nil;
@@ -50,32 +50,32 @@
     }
     
     
-    //Set screen name
+    // Set screen name
     self.screenName.text = self.tweet.user.name;
     
-    //Set name
+    // Set name
     self.name.text = [NSString stringWithFormat:@"@%@", self.tweet.user.screenName];
     
-    //Set tweet text;
+    // Set tweet text;
     self.tweetText.text = self.tweet.text;
     
-    //Set retweet count
+    // Set retweet count
     self.retweetCount.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     
-    //Set favorite count
+    // Set favorite count
     self.favoriteCount.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
     
-    //Set timestamp
+    // Set timestamp
     
     self.timestamp.text = self.tweet.createdAtString;
 }
 
 - (IBAction)tweetRetweeted:(UIButton *)sender {
     if (!self.tweet.retweeted) {
-        //Set tweet status to retweeted and update retweet count
+        // Set tweet status to retweeted and update retweet count
         self.tweet.retweeted = YES;
         self.tweet.retweetCount += 1;
-        //API call to retweet
+        // API call to retweet
         [[APIManager shared] retweetTweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
              if(error){
                   NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
@@ -87,7 +87,7 @@
     } else {
         self.tweet.retweeted = NO;
         self.tweet.retweetCount -= 1;
-        //API call to unretweet
+        // API call to unretweet
         [[APIManager shared] unretweetTweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
              if(error){
                   NSLog(@"Error unretweeting tweet: %@", error.localizedDescription);
@@ -97,16 +97,16 @@
              }
          }];
     }
-    //Reloads UI
+    // Reloads UI
     [self refreshData];
 }
 
 - (IBAction)tweetFavorited:(UIButton *)sender {
     if (!self.tweet.favorited) {
-        //Set tweet status to favorited and update its favorite count
+        // Set tweet status to favorited and update its favorite count
         self.tweet.favorited = YES;
         self.tweet.favoriteCount += 1;
-        //API call to favorite tweet
+        // API call to favorite tweet
         [[APIManager shared] favoriteTweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
              if(error){
                   NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
@@ -128,19 +128,9 @@
              }
          }];
     }
-    //Reloads UI
+    // Reloads UI
     [self refreshData];
 
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

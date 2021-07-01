@@ -40,6 +40,10 @@
     [self loadTweets];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self loadTweets];
+}
+
 - (void)loadTweets {
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
@@ -47,10 +51,6 @@
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             //Sets tweet array property to result of API call
             self.tweetArray = (NSMutableArray*) tweets;
-//            for (NSDictionary *dictionary in tweets) {
-//                NSString *text = dictionary[@"text"];
-//                NSLog(@"%@", text);
-//            }
             [self.timelineView reloadData];
             [self.refreshControl endRefreshing];
         } else {

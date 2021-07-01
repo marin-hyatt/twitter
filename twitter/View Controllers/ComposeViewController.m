@@ -8,13 +8,14 @@
 
 #import "ComposeViewController.h"
 #import "../API/APIManager.h"
+#import "User.h"
 
 @interface ComposeViewController ()
+@property (nonatomic, strong) User *user;
 @property (weak, nonatomic) IBOutlet UITextView *composeTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
 - (IBAction)sendTweet:(UIBarButtonItem *)sender;
 - (IBAction)closeTweet:(UIBarButtonItem *)sender;
-
-
 
 @end
 
@@ -22,19 +23,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Make API call to get user info
+    [[APIManager shared] getAccountInfo:^(User *user, NSError *error) {
+        if (user) {
+            NSLog(@"😎😎😎 Successfully loaded user info");
+            self.user = user;
+            [self refreshView];
+        } else {
+            NSLog(@"😫😫😫 Error getting user info: %@", error.localizedDescription);
+        }
+    }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)refreshView {
+    // Sets user profile picture
+    self.profilePicture.image = nil;
+    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2;
+    self.profilePicture.layer.masksToBounds = true;
+    
+    if (self.user.profilePictureData != nil) {
+        self.profilePicture.image = [UIImage imageWithData:self.user.profilePictureData];
+    }
 }
-*/
-
 
 - (IBAction)closeTweet:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:true completion:nil];

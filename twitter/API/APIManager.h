@@ -9,6 +9,7 @@
 #import "BDBOAuth1SessionManager.h"
 #import "BDBOAuth1SessionManager+SFAuthenticationSession.h"
 #import "Tweet.h"
+#import "User.h"
 
 @interface APIManager : BDBOAuth1SessionManager
 
@@ -20,5 +21,6 @@
 - (void)unfavoriteTweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
 - (void)retweetTweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
 - (void)unretweetTweet:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
+- (void)getAccountInfo:(void(^)(User *user, NSError *error))completion;
 
 @end

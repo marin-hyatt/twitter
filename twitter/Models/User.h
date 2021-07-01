@@ -22,9 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString* bio;
 @property (nonatomic) int numTweets;
 
-
-
-//Initializer
+// Initializer
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end
 

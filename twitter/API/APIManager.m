@@ -8,6 +8,7 @@
 
 #import "APIManager.h"
 #import "Tweet.h"
+#import "User.h"
 
 static NSString * const baseURLString = @"https://api.twitter.com";
 
@@ -54,13 +55,26 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 }
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
-    
+    NSDictionary *parameters = @{@"tweet_mode":@"extended"};
     // Create a GET Request
     [self GET:@"1.1/statuses/home_timeline.json"
-       parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+       parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
            // If successful, initialize tweets
            NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
            completion(tweets, nil);
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           // Otherwise, raise an error
+           completion(nil, error);
+    }];
+}
+
+- (void)getAccountInfo:(void (^)(User *, NSError *))completion {
+    // Create a GET request
+    [self GET:@"https://api.twitter.com/1.1/account/verify_credentials.json"
+       parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable userDictionary) {
+           // If successful, initialize user with dictionary returned
+           User *user  = [[User alloc] initWithDictionary:userDictionary];
+           completion(user, nil);
        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            // Otherwise, raise an error
            completion(nil, error);
@@ -83,7 +97,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     NSString *urlString = @"1.1/favorites/create.json";
     NSDictionary *parameters = @{@"id": tweet.idStr};
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
-        //Creates a tweet object with the favorited tweet
+        // Creates a tweet object with the favorited tweet
         Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
         completion(tweet, nil);
         NSLog(@"Tweet favorited!");
@@ -96,7 +110,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     NSString *urlString = @"1.1/favorites/destroy.json";
     NSDictionary *parameters = @{@"id": tweet.idStr};
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
-        //Creates a tweet object with the favorited tweet
+        // Creates a tweet object with the favorited tweet
         Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
         completion(tweet, nil);
         NSLog(@"Tweet unfavorited!");
@@ -109,7 +123,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     NSString *urlString = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweet.idStr];
     NSDictionary *parameters = @{@"id": tweet.idStr};
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
-        //Creates a tweet object with the favorited tweet
+        // Creates a tweet object with the favorited tweet
         Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
         completion(tweet, nil);
         NSLog(@"Tweet retweeted!");
@@ -122,7 +136,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     NSString *urlString = [NSString stringWithFormat:@"1.1/statuses/unretweet/%@.json", tweet.idStr];
     NSDictionary *parameters = @{@"id": tweet.idStr};
     [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
-        //Creates a tweet object with the favorited tweet
+        // Creates a tweet object with the favorited tweet
         Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
         completion(tweet, nil);
         NSLog(@"Tweet unretweeted!");

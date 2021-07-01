@@ -32,7 +32,7 @@
     self.screenName.text = self.user.name;
     self.name.text = [NSString stringWithFormat:@"@%@", self.user.screenName];
     
-    //Set profile picture
+    // Set profile picture
     self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2;
     self.profilePicture.layer.masksToBounds = true;
     self.profilePicture.image = nil;
@@ -41,34 +41,24 @@
         self.profilePicture.image = [UIImage imageWithData:self.user.profilePictureData];
     }
 
-    //Set banner picture
+    // Set banner picture
     self.bannerPicture.image = nil;
     
     if (self.user.profileBannerData != nil) {
         self.bannerPicture.image = [UIImage imageWithData:self.user.profileBannerData];
     }
     
-    //Set number following
+    // Set number following
     self.numFollowing.text = [NSString stringWithFormat:@"%d", self.user.numFollowing];
     
-    //Set number followers
+    // Set number followers
     self.numFollowers.text = [NSString stringWithFormat:@"%d", self.user.numFollowers];
     
-    //Set bio
+    // Set bio
     self.bio.text = self.user.bio;
     
-    //Set number of tweets
+    // Set number of tweets
     self.numTweets.text = [NSString stringWithFormat:@"%d", self.user.numTweets];
     
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

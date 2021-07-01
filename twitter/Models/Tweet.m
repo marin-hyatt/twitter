@@ -16,7 +16,7 @@
     if (self) {
         // Checks if tweet is a retweet
         NSDictionary *originalTweet = dictionary[@"retweeted_status"];
-        //if tweet is a retweet, get the user and update retweeted status. Then change the tweet to the original tweet
+        // If tweet is a retweet, get the user and update retweeted status. Then change the tweet to the original tweet
         if(originalTweet != nil){
             NSDictionary *userDictionary = dictionary[@"user"];
             NSLog(@"%@", userDictionary);
@@ -24,9 +24,16 @@
 
             dictionary = originalTweet;
         }
-        //Otherwise, initialize the tweet with the appropriate values from the dictionary
+        // Otherwise, initialize the tweet with the appropriate values from the dictionary
         self.idStr = dictionary[@"id_str"];
-        self.text = dictionary[@"text"];
+        
+        // Gets full text if it's available, otherwise get regular text
+        if([dictionary valueForKey:@"full_text"] != nil) {
+               self.text = dictionary[@"full_text"]; // uses full text if Twitter API provided it
+           } else {
+               self.text = dictionary[@"text"]; // fallback to regular text that Twitter API provided
+           }
+        
         self.favoriteCount = [dictionary[@"favorite_count"] intValue];
         self.favorited = [dictionary[@"favorited"] boolValue];
         self.retweetCount = [dictionary[@"retweet_count"] intValue];
@@ -61,7 +68,7 @@
             self.createdAtString = timeAgoDate.shortTimeAgoSinceNow;
         }
         
-        //Get any (non-media) URLs in tweet if there are any
+        // Get any (non-media) URLs in tweet if there are any
         NSDictionary *entityDictionary = dictionary[@"entities"];
         NSArray *urlArray = entityDictionary[@"urls"];
         
@@ -73,13 +80,12 @@
     return self;
 }
 
-//Returns tweets when initialized with tweet dictionaries.
+// Returns tweets when initialized with tweet dictionaries.
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries{
-    //Initializes the array
+    // Initializes the array
     NSMutableArray *tweets = [NSMutableArray array];
-    //For every tweet dictionary, initialize the tweet and add it to the array
+    // For every tweet dictionary, initialize the tweet and add it to the array
     for (NSDictionary *dictionary in dictionaries) {
-//        NSLog(@"%@", dictionary);
         Tweet *tweet = [[Tweet alloc] initWithDictionary:dictionary];
         [tweets addObject:tweet];
     }
