@@ -19,6 +19,7 @@
 		6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD2790820BCC04D0085BC29 /* TimelineViewController.m */; };
 		9B324FEB268A8AF800B8F75B /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B324FEA268A8AF800B8F75B /* ComposeViewController.m */; };
 		9B324FF5268CDD8800B8F75B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B324FF4268CDD8800B8F75B /* DetailViewController.m */; };
+		9B8D26ED268E22C900712FE5 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D26EC268E22C900712FE5 /* ProfileViewController.m */; };
 		9BFD0A8F268A5FDB00411C70 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BFD0A8E268A5FDB00411C70 /* Keys.plist */; };
 		9BFD0A92268A68B200411C70 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD0A91268A68B200411C70 /* User.m */; };
 		9BFD0A95268A69AA00411C70 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD0A94268A69AA00411C70 /* Tweet.m */; };
@@ -49,6 +50,8 @@
 		9B324FEA268A8AF800B8F75B /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		9B324FF3268CDD8800B8F75B /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		9B324FF4268CDD8800B8F75B /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		9B8D26EB268E22C900712FE5 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		9B8D26EC268E22C900712FE5 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		9BFD0A8E268A5FDB00411C70 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		9BFD0A90268A68B200411C70 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		9BFD0A91268A68B200411C70 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				9B324FEA268A8AF800B8F75B /* ComposeViewController.m */,
 				9B324FF3268CDD8800B8F75B /* DetailViewController.h */,
 				9B324FF4268CDD8800B8F75B /* DetailViewController.m */,
+				9B8D26EB268E22C900712FE5 /* ProfileViewController.h */,
+				9B8D26EC268E22C900712FE5 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 				9B324FF5268CDD8800B8F75B /* DetailViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
 				6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */,
+				9B8D26ED268E22C900712FE5 /* ProfileViewController.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

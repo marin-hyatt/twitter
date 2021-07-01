@@ -14,6 +14,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
 #import "DetailViewController.h"
+#import "ProfileViewController.h"
 
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 
@@ -70,6 +71,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetCell *cell = [self.timelineView dequeueReusableCellWithIdentifier:@"TweetCell"];
     
+    //Assigns TimelineViewController as the TweetCellDelegate that will navigate to user's profile page
+    cell.delegate = self;
+    
     Tweet *tweet = self.tweetArray[indexPath.row];
     cell.tweet = tweet;
     
@@ -93,17 +97,23 @@
         // Gets the destination view controller.
         DetailViewController *detailViewController = [segue destinationViewController];
         
-        // Pass the movie to the new view controller.
+        // Pass the tweet to the new view controller.
         detailViewController.tweet = tweet;
         
-    } else {
+    } else if ([[segue identifier]  isEqual: @"ComposeViewController"]){
         // Segue to compose tweets
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         //Sets timeline view controller as delegate of compose view controller
         composeController.delegate = self;
         
-        //Send profile picture to Compose tweet screen
+        //TODO: Send profile picture to Compose tweet screen
+
+    } else {
+        //Segue to Profile View Controller
+        UINavigationController *navigationController = [segue destinationViewController];
+
+        //Passes in user to profile view controller
         
     }
     
@@ -128,6 +138,13 @@
     [self.tweetArray addObject:tweet];
     [self.timelineView reloadData];
     [self dismissViewControllerAnimated:true completion:nil];
+}
+
+
+//Method conforming to tweet cell delegate that navigates to user profile.
+- (void)tweetCell:(TweetCell *)tweetCell didTap:(User *)user {
+    //Perform segue programmatically
+    [self performSegueWithIdentifier:@"ProfileViewController" sender:user];
 }
 
 @end

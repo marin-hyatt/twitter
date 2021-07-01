@@ -41,13 +41,12 @@
     self.retweetButton.selected = self.tweet.retweeted;
     
     //Set profile picture
+    self.profilePicture.layer.cornerRadius = 25;
+    self.profilePicture.layer.masksToBounds = true;
     self.profilePicture.image = nil;
     
-    if (self.tweet.user.profilePicture != nil) {
-        NSString *URLString = self.tweet.user.profilePicture;
-        NSURL *url = [NSURL URLWithString:URLString];
-        NSData *urlData = [NSData dataWithContentsOfURL:url];
-        self.profilePicture.image = [UIImage imageWithData:urlData];
+    if (self.tweet.user.profilePictureData != nil) {
+        self.profilePicture.image = [UIImage imageWithData:self.tweet.user.profilePictureData];
     }
     
     

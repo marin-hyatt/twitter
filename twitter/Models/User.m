@@ -17,7 +17,12 @@
         //Sets name, screen name, and profile picture to values taken from the dictionary returned by Twitter API
         self.name = dictionary[@"name"];
         self.screenName = dictionary[@"screen_name"];
-        self.profilePicture = dictionary[@"profile_image_url_https"];
+        
+        //Sets user image from string
+        NSString *profilePictureURLString = dictionary[@"profile_image_url_https"];
+        NSURL *url = [NSURL URLWithString:profilePictureURLString];
+        NSData *urlData = [NSData dataWithContentsOfURL:url];
+        self.profilePictureData = urlData;
     }
     return self;
 }

@@ -266,11 +266,53 @@
                     </navigationItem>
                     <connections>
                         <outlet property="timelineView" destination="fwf-mY-zsR" id="51j-EY-7Yj"/>
+                        <segue destination="fU2-G4-Job" kind="show" identifier="ProfileViewController" id="Blq-wi-Q7f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="36.431784107946029"/>
+            <point key="canvasLocation" x="1671" y="36"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="ojF-TY-8et">
+            <objects>
+                <viewController id="fU2-G4-Job" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z4U-e6-fZh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i7z-2B-Ced">
+                                <rect key="frame" x="16" y="93" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="screen name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67s-us-rUs">
+                                <rect key="frame" x="16" y="201" width="150" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0t7-nZ-wTM">
+                                <rect key="frame" x="16" y="229" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mBD-lg-1Zn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jLW-VJ-xe7"/>
+                    <connections>
+                        <outlet property="name" destination="0t7-nZ-wTM" id="bV5-xU-Brm"/>
+                        <outlet property="profilePicture" destination="i7z-2B-Ced" id="pdZ-h7-dx9"/>
+                        <outlet property="screenName" destination="67s-us-rUs" id="kox-Ie-R9s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y5W-QY-P3J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1245.5999999999999" y="814.54272863568224"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="HAX-PV-qb0">
@@ -407,7 +449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wng-y3-TZj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="814.54272863568224"/>
+            <point key="canvasLocation" x="2103" y="815"/>
         </scene>
         <!--Compose View Controller-->
         <scene sceneID="PzL-7D-aeo">
@@ -492,6 +534,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rDa-0L-5Ag" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2505" y="36"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1Ab-gu-1SQ">
+            <objects>
+                <viewController id="tpN-FZ-FYW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T42-BZ-dOm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="NYm-wQ-wUt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Jy-nN-XXB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1292" y="-661"/>
         </scene>
     </scenes>
     <resources>

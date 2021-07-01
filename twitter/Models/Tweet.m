@@ -19,6 +19,7 @@
         //if tweet is a retweet, get the user and update retweeted status. Then change the tweet to the original tweet
         if(originalTweet != nil){
             NSDictionary *userDictionary = dictionary[@"user"];
+            NSLog(@"%@", userDictionary);
             self.retweetedByUser = [[User alloc] initWithDictionary:userDictionary];
 
             dictionary = originalTweet;
@@ -59,7 +60,7 @@
             self.createdAtString = timeAgoDate.shortTimeAgoSinceNow;
         }
         
-        //Get any (non-media) URLs in tweet
+        //Get any (non-media) URLs in tweet if there are any
         NSDictionary *entityDictionary = dictionary[@"entities"];
         NSArray *urlArray = entityDictionary[@"urls"];
         

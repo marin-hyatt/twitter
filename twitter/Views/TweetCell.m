@@ -75,6 +75,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    //Configures gesture recognizer to go to user's profile
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
+    //Attach gesture recognizer to profile picture and enables user interaction
+    [self.profilePicture addGestureRecognizer:profileTapGestureRecognizer];
+    [self.profilePicture setUserInteractionEnabled:YES];
 }
 
 -(void)refreshData {
@@ -100,11 +105,8 @@
     self.profilePicture.layer.masksToBounds = true;
     self.profilePicture.image = nil;
     
-    if (self.tweet.user.profilePicture != nil) {
-        NSString *URLString = self.tweet.user.profilePicture;
-        NSURL *url = [NSURL URLWithString:URLString];
-        NSData *urlData = [NSData dataWithContentsOfURL:url];
-        self.profilePicture.image = [UIImage imageWithData:urlData];
+    if (self.tweet.user.profilePictureData != nil) {
+        self.profilePicture.image = [UIImage imageWithData:self.tweet.user.profilePictureData];
     }
     
     
@@ -132,6 +134,10 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+- (void)didTapUserProfile:(UITapGestureRecognizer *)sender {
+    //Calls delegate, passes in itself as the tweet cell that was tapped and the user of the tweet as the user
+    [self.delegate tweetCell:self didTap:self.tweet.user];
 }
 
 @end
