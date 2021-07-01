@@ -514,7 +514,7 @@
                                     <constraint firstAttribute="height" constant="300" id="3lc-7r-7S5"/>
                                     <constraint firstAttribute="width" constant="250" id="QKJ-qw-ZIb"/>
                                 </constraints>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
