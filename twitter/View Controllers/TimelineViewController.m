@@ -111,9 +111,10 @@
 
     } else {
         //Segue to Profile View Controller
-        UINavigationController *navigationController = [segue destinationViewController];
-
-        //Passes in user to profile view controller
+        ProfileViewController *profileController = [segue destinationViewController];
+        
+        //Passes user to profile view controller
+        profileController.user = sender;
         
     }
     

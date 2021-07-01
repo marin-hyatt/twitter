@@ -20,9 +20,32 @@
         
         //Sets user image from string
         NSString *profilePictureURLString = dictionary[@"profile_image_url_https"];
-        NSURL *url = [NSURL URLWithString:profilePictureURLString];
-        NSData *urlData = [NSData dataWithContentsOfURL:url];
-        self.profilePictureData = urlData;
+        NSURL *profileUrl = [NSURL URLWithString:profilePictureURLString];
+        NSData *profileUrlData = [NSData dataWithContentsOfURL:profileUrl];
+        self.profilePictureData = profileUrlData;
+        
+        //Sets banner image from string
+        NSString *bannerURLString = dictionary[@"profile_banner_url"];
+        NSURL *bannerUrl = [NSURL URLWithString:bannerURLString];
+        NSData *bannerUrlData = [NSData dataWithContentsOfURL:bannerUrl];
+        self.profileBannerData = bannerUrlData;
+        
+        //Sets user id
+        self.userID = [dictionary[@"id"] integerValue];
+        
+        //Sets number of followers
+        self.numFollowers = [dictionary[@"followers_count"] integerValue];
+        
+        //Sets num following
+        self.numFollowing = [dictionary[@"friends_count"] integerValue];
+        
+        //Sets bio
+        self.bio = dictionary[@"description"];
+        
+        //Sets num tweets
+        self.numTweets =[dictionary[@"statuses_count"] integerValue];
+        
+        
     }
     return self;
 }

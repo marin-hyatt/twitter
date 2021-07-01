@@ -15,6 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* screenName;
 @property (nonatomic, strong) NSData* profilePictureData;
+@property (nonatomic, strong) NSData* profileBannerData;
+@property (nonatomic) int userID;
+@property (nonatomic) int numFollowers;
+@property (nonatomic) int numFollowing;
+@property (nonatomic, strong) NSString* bio;
+@property (nonatomic) int numTweets;
+
 
 
 //Initializer

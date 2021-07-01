@@ -34,6 +34,7 @@
         
         // initialize user
         NSDictionary *user = dictionary[@"user"];
+        NSLog(@"%@", user);
         self.user = [[User alloc] initWithDictionary:user];
         
 
