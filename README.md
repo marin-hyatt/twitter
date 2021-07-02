@@ -59,6 +59,7 @@ Here's a walkthrough of implemented user stories:
 ![](twitter_2.gif)
 ![](twitter_3.gif)
 ![](twitter_4.gif)
+![](twitter_5.gif)
 
 GIF created with [Kap](https://getkap.co/).
 
